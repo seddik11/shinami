@@ -11,8 +11,8 @@ dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
-const nodeClient = createSuiClient(process.env.GAS_AND_NODE_TESTNET_ACCESS_KEY);
-const gasStationClient = new GasStationClient(process.env.GAS_AND_NODE_TESTNET_ACCESS_KEY);
+const nodeClient = createSuiClient(process.env.GAS_AND_NODE_TESTNET_ACCESS_KEY!);
+const gasStationClient = new GasStationClient(process.env.GAS_AND_NODE_TESTNET_ACCESS_KEY!);
 
 app.use(express.json())
 
@@ -87,10 +87,13 @@ const transaction = TransactionBlock.from(serializedTransaction)
 
 console.log(await nodeClient.getChainIdentifier());
 
-const gaslessTransaction = await buildGaslessTransactionBytes(
-  nodeClient,
-  transaction
+const gaslessTransaction = await buildGaslessTransactionBytes({
+    sui: nodeClient,
+    txb: transaction
+}
 )
+
+console.log(gaslessTransaction);
 
 let sponsoredResponse = await gasStationClient.sponsorTransactionBlock(
     gaslessTransaction,
