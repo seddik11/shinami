@@ -111,8 +111,8 @@ let sponsoredResponse = await gasStationClient.sponsorTransactionBlock(
   res.send(sponsoredResponse);
 });
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`[server]: Server is running at http://localhost:${port}`);
+// });
 
 module.exports = app;
