@@ -1,0 +1,12 @@
+{
+    "devDependencies": {
+        "typescript": "^5.4.5"
+    },
+    "dependencies": {
+        "@mysten/sui.js": "^0.54.1",
+        "@shinami/clients": "^0.8.0",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2"
+    },
+    "type": "module"
+}
